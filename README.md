@@ -1,2 +1,9 @@
 # TheWeather
-Check whether a city is for you or not!
+<p>A basic weather application with additional features such as user defined maxTemperature and maxHumidity.<br/>
+The temperature and the humidity are then color-coded in the search results according to user's input.<br/>
+The search is based on the city name primarily.<br/>
+The search results show the country name of the city automatically.</p>
+
+Also has basic error call backs. 
+Such as, if the user did not input a city name, it throws an error (but a pretty one).</br>
+Also, if the user entered a wrong city name, an error is displayed.
