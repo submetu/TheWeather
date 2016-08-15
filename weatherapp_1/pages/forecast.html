@@ -1,0 +1,68 @@
+<!--CONDITION 1(no city selected)-->
+<div ng-if="cityName ==='' ">
+    <div class="panel panel-warning" style="max-width:400px;margin-left:auto; margin-right:auto;">
+        <div class="panel-heading">
+             <p class="text-center"><strong>No city selected!</strong></p>
+        </div>
+    </div>
+    <a href="#/"><p class="text-center">Go back to the home page</p></a>
+</div>
+
+<!--CONDITION 2(comfort parameter(s) not selected-->
+<div ng-if="cityName !=='' && (comfortTemp ==='' || comfortHumid ==='' )">
+    <div class="panel panel-warning" style="max-width:400px;margin-left:auto; margin-right:auto;">
+        <div class="panel-heading">
+             <p class="text-center"><strong>Comfort parameter(s) not selected!</strong></p>
+        </div>
+    </div>
+    <a href="#/"><p class="text-center">Go back to the home page</p></a>
+</div>
+    
+<!--CONDITION 3 (everything OK)-->
+<div ng-if="weatherResult.cod==='200' && comfortTemp!=='' && comfortHumid!=='' " >
+<label>Days:</label>
+<a href="#/forecast/2" ng-class="{'bg-primary':days==='2'}">2</a> | 
+<a href="#/forecast/5" ng-class="{'bg-primary':days==='5'}">5</a> | 
+<a href="#/forecast/7" ng-class="{'bg-primary':days==='7'}">7</a> |
+<a href="#/forecast/12" ng-class="{'bg-primary':days==='12'}">12</a>
+<div class="panel panel-primary" style="max-width:400px;margin-left:auto; margin-right:auto;">
+    <div class="panel-heading">
+         <p class="text-center" style="font-size:20px"><strong>Forecast for {{cityName}} <small>({{weatherResult.city.country}})</small></strong></p>
+    </div>
+</div>
+<a href="#/"><p class="text-center">Go back to the home page</p></a>
+<table class="table">
+<thead>
+  <tr>
+    <th>Date</th>
+    <th>Weather</th>
+    <th>Min Temp</th>
+    <th>Max Temp</th>
+    <th>Humidity</th>  
+  </tr>
+</thead>
+<tbody>
+  <tr ng-repeat="w in weatherResult.list" >
+        <td>{{getDate(w.dt) | date:'MMM d,y'}}</td>
+        <td>{{w.weather[0].main}}</td>
+        <td ng-class="{'danger':getCelsius(w.temp.min)>comfortTemp,'success':getCelsius(w.temp.min)<=comfortTemp}">{{getCelsius(w.temp.min)}}<small>degrees</small></td>
+        <td ng-class="{'danger':getCelsius(w.temp.max)>comfortTemp,'success':getCelsius(w.temp.max)<=comfortTemp}">{{getCelsius(w.temp.max)}}<small>degrees</small></td>
+        <td ng-class="{'danger':w.humidity>comfortHumid,'success':w.humidity<=comfortHumid}">{{w.humidity}}<small>%</small></td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<!--CONDITION 4 (city not valid)-->
+<div ng-if="weatherResult.cod!=='200' && cityName!=='' && comfortTemp!=='' && comfortHumid!=='' ">
+    <div class="panel panel-warning" style="max-width:400px;margin-left:auto; margin-right:auto;">
+        <div class="panel-heading">
+             <p class="text-center"><strong>No such city found, please try again!</strong></p>
+        </div>
+    </div>
+    <a href="#/"><p class="text-center">Go back to the home page</p></a>
+</div>
+
+
+
+
