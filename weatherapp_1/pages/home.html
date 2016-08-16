@@ -8,11 +8,12 @@
     </div>
     
     <div class="col-md-6 col-md-offset-3"></div>
+    <form ng-submit="submit()">
     <div class="form-group">
     <input type="text" placeholder="City name" class="form-control" ng-model="cityName">
     <input type="text" placeholder="Max comfort Temperature in celsius" class="form-control" ng-model="comfortTemp">
     <input type="text" placeholder="Max comfort Humidity in percent" class="form-control" ng-model="comfortHumid">
     </div>
-    <a href="#/forecast"class="btn btn-primary" >Forecast</a>
-
+    <input type="submit" class="btn btn-primary" value="Forecast">
+    </form>
 </div>
