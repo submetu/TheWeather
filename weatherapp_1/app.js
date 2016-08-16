@@ -36,6 +36,7 @@ weatherApp.controller('homeController', ['$scope','cityService','comfortService'
     $scope.comfortTemp='';
     $scope.comfortHumid='';
     
+    
 }]);
 
 
