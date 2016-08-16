@@ -19,20 +19,21 @@
 </div>
     
 <!--CONDITION 3 (everything OK)-->
-<div ng-if="weatherResult.cod==='200' && comfortTemp!=='' && comfortHumid!=='' " >
+
+<div ng-if="weatherResult.cod==='200' && comfortTemp!=='' && cityName !=='' && comfortHumid!=='' " >
 <label>Days:</label>
 <a href="#/forecast/2" ng-class="{'bg-primary':days==='2'}">2</a> | 
 <a href="#/forecast/5" ng-class="{'bg-primary':days==='5'}">5</a> | 
 <a href="#/forecast/7" ng-class="{'bg-primary':days==='7'}">7</a> |
 <a href="#/forecast/12" ng-class="{'bg-primary':days==='12'}">12</a>
-<div class="panel panel-primary" style="max-width:400px;margin-left:auto; margin-right:auto;">
+<div class="panel panel-primary" style="max-width:400px;margin-left:auto; margin-right:auto; margin-bottom:7px">
     <div class="panel-heading">
          <p class="text-center" style="font-size:20px"><strong>Forecast for {{cityName}} <small>({{weatherResult.city.country}})</small></strong></p>
     </div>
 </div>
-<a href="#/"><p class="text-center">Go back to the home page</p></a>
+<a href="#/"><p class="text-center" style="margin-bottom:65px">Go back to the home page</p></a>
 <table class="table">
-<thead>
+<thead style="background-color:#d3d3d3">
   <tr>
     <th>Date</th>
     <th>Weather</th>
