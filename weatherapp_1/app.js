@@ -18,7 +18,7 @@ weatherApp.config(function($routeProvider){
 });
 
 //HOMECONTROLLER
-weatherApp.controller('homeController', ['$scope','cityService','comfortService', function($scope,cityService,comfortService){
+weatherApp.controller('homeController', ['$scope','$location','cityService','comfortService', function($scope,$location,cityService,comfortService){
     
     $scope.cityName=cityService.cityName;
     $scope.comfortTemp=comfortService.comfortTemp;
@@ -35,6 +35,9 @@ weatherApp.controller('homeController', ['$scope','cityService','comfortService'
     $scope.cityName='';
     $scope.comfortTemp='';
     $scope.comfortHumid='';
+    $scope.submit=function(){
+        $location.path('/forecast');
+    };
     
     
 }]);
